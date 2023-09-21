@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:str_list_operation/whale.dart';
 
@@ -37,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           backgroundColor: Colors.purple.shade100,
           centerTitle: true,
-          title: Text("Operation"),
+          title: const Text("Operation"),
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 10.0),
@@ -45,65 +46,63 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Whale()),
+                    MaterialPageRoute(builder: (context) => const Whale()),
                   );
                 },
-                icon: Icon(Icons.ac_unit_outlined, size: 30),
+                icon: const Icon(Icons.ac_unit_outlined, size: 30),
                 color: Colors.deepPurple,
               ),
             )
           ],
         ),
         body: SingleChildScrollView(
-          child: Container(
-            child: Column(children: [
-              sizedBox25(),
-              buildCircleAvatar(),
-              sizedBox25(),
-              buildTextFormField("Enter Your Name", name),
-              sizedBox25(),
-              buildTextFormField("Enter your last Name", surName),
-              sizedBox25(),
-              buildTextFormField("Enter your cell No.", number),
-              sizedBox25(),
-              containerResult(
-                Colors.deepPurple.shade200,
-                "Concatenation :  $userName$lastName",
-              ),
-              buildSizedBox10(),
-              containerResult(
-                Colors.deepPurple.shade300,
-                "Trimmed - ${lastName.trim().toLowerCase()}",
-              ),
-              buildSizedBox10(),
-              containerResult(Colors.deepPurple.shade400,
-                  "UpperCase - ${lastName.toUpperCase()}"),
-              buildSizedBox10(),
-              containerResult(
-                Colors.deepPurple.shade500,
-                "THE Lengh of last name = ${lastName.length.toString()}",
-              ),
-              buildSizedBox10(),
-              containerResult(
-                Colors.deepPurple.shade500,
-                userName.contains("j").toString(),
-              ),
-              buildSizedBox10(),
-              buildRow(),
-              buildSizedBox10(),
-              containerResult(
-                Colors.deepPurple.shade700,
-                "split =" + splitout,
-              ),
-              buildSizedBox10(),
-              containerResult(
-                Colors.deepPurple.shade800,
-                splitout,
-              ),
-              buildSizedBox10(),
-              buttonClick(),
-            ]),
-          ),
+          child: Column(children: [
+            sizedBox25(),
+            buildCircleAvatar(),
+            sizedBox25(),
+            buildTextFormField("Enter Your Name", name),
+            sizedBox25(),
+            buildTextFormField("Enter your last Name", surName),
+            sizedBox25(),
+            buildTextFormField("Enter your cell No.", number),
+            sizedBox25(),
+            containerResult(
+              Colors.deepPurple.shade200,
+              "Concatenation :  $userName$lastName",
+            ),
+            buildSizedBox10(),
+            containerResult(
+              Colors.deepPurple.shade300,
+              "Trimmed - ${lastName.trim().toLowerCase()}",
+            ),
+            buildSizedBox10(),
+            containerResult(Colors.deepPurple.shade400,
+                "UpperCase - ${lastName.toUpperCase()}"),
+            buildSizedBox10(),
+            containerResult(
+              Colors.deepPurple.shade500,
+              "THE Lengh of last name = ${lastName.length.toString()}",
+            ),
+            buildSizedBox10(),
+            containerResult(
+              Colors.deepPurple.shade500,
+              userName.contains("j").toString(),
+            ),
+            buildSizedBox10(),
+            buildRow(),
+            buildSizedBox10(),
+            containerResult(
+              Colors.deepPurple.shade700,
+              "split =$splitout",
+            ),
+            buildSizedBox10(),
+            containerResult(
+              Colors.deepPurple.shade800,
+              splitout,
+            ),
+            buildSizedBox10(),
+            buttonClick(),
+          ]),
         ));
   }
 
@@ -113,10 +112,10 @@ class _MyHomePageState extends State<MyHomePage> {
       width: double.maxFinite,
       color: color,
       child: Padding(
-        padding: EdgeInsets.only(left: 20, top: 12),
+        padding: const EdgeInsets.only(left: 20, top: 12),
         child: Text(
           text,
-          style: TextStyle(color: Colors.white, fontSize: 20),
+          style: const TextStyle(color: Colors.white, fontSize: 20),
         ),
       ),
     );
@@ -127,30 +126,30 @@ class _MyHomePageState extends State<MyHomePage> {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Container(
-          padding: EdgeInsets.only(left: 20, right: 20),
+          padding: const EdgeInsets.only(left: 20, right: 20),
           height: 50,
           color: Colors.deepPurple.shade500,
           child: Center(
             child: Text(
               "isNotEmpty -${userName.isNotEmpty.toString()}",
               //userName.isNotEmpty.toString(),
-              style: TextStyle(color: Colors.white, fontSize: 20),
+              style: const TextStyle(color: Colors.white, fontSize: 20),
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 20,
         ),
         Container(
           width: 170,
           height: 50,
-          padding: EdgeInsets.only(right: 20, left: 20),
+          padding: const EdgeInsets.only(right: 20, left: 20),
           color: Colors.deepPurple.shade500,
           child: Center(
             child: Text(
               "isEmpty -${userName.isEmpty.toString()}",
               //userName.isNotEmpty.toString(),
-              style: TextStyle(color: Colors.white, fontSize: 20),
+              style: const TextStyle(color: Colors.white, fontSize: 20),
             ),
           ),
         ),
@@ -167,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
         userName == "" || lastName == ""
             ? ""
             : '${userName.substring(0, 1).toUpperCase()}${lastName.substring(0, 1).toUpperCase().trim()}',
-        style: TextStyle(
+        style: const TextStyle(
             color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
       ),
     );
@@ -175,7 +174,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Container buttonClick() {
     return Container(
-      padding: EdgeInsets.only(top: 05, bottom: 5),
+      padding: const EdgeInsets.only(top: 05, bottom: 5),
       // color: Colors.blue.shade900,
       height: 50,
       width: double.maxFinite,
@@ -184,15 +183,21 @@ class _MyHomePageState extends State<MyHomePage> {
           userName = name.text;
           lastName = surName.text;
           splitout = splt.split(" ").toString();
-          print(splitout);
+          if (kDebugMode) {
+            print(splitout);
+          }
 
 // indexOf String
           //   print(plm);
           var ghj = planet.indexOf('pluto'); // indexOf List
-          print("indexof List-- ${ghj}");
+          if (kDebugMode) {
+            print("index List-- $ghj");
+          }
           var poi =
               splt.lastIndexOf("y"); // String splt = 'today is friday !!';
-          print("LastIndexOf String" + {poi}.toString());
+          if (kDebugMode) {
+            print("LastIndexOf String${{poi}}");
+          }
 
           //   print(pok);
           //    print(pkn);
@@ -205,13 +210,13 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         child: Text(
           "Click".toUpperCase(),
-          style: TextStyle(fontSize: 17),
+          style: const TextStyle(fontSize: 17),
         ),
       ),
     );
   }
 
-  SizedBox buildSizedBox10() => SizedBox(
+  SizedBox buildSizedBox10() => const SizedBox(
         height: 5,
       );
 
@@ -221,7 +226,7 @@ class _MyHomePageState extends State<MyHomePage> {
       border: Border.all(
           color: Colors.deepPurple.shade700,
           style: BorderStyle.solid), //Border.all
-      borderRadius: BorderRadius.all(
+      borderRadius: const BorderRadius.all(
         Radius.circular(0),
       ),
     );
@@ -234,23 +239,24 @@ class _MyHomePageState extends State<MyHomePage> {
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TextStyle(fontSize: 15.0, color: Colors.grey.shade400),
-        contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-        border: OutlineInputBorder(
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+        border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(32.0)),
         ),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.deepPurple.shade200, width: 1.0),
-          borderRadius: BorderRadius.all(Radius.circular(32.0)),
+          borderRadius: const BorderRadius.all(Radius.circular(32.0)),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.deepPurple.shade500, width: 2.0),
-          borderRadius: BorderRadius.all(Radius.circular(32.0)),
+          borderRadius: const BorderRadius.all(Radius.circular(32.0)),
         ),
       ),
     );
   }
 
-  SizedBox sizedBox25() => SizedBox(
+  SizedBox sizedBox25() => const SizedBox(
         height: 25,
       );
 }
